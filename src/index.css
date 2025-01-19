@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #007bff;
+    --primary-color-dark: #0056b3;
+    --secondary-color: #ff5733;
+    --secondary-color-dark: #d23f1a;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --gray-color: #6c757d;
+    --gray-color-light: #f4f4f4;
+    --gray-color-dark: #495057;
+    --font-family: 'Roboto', sans-serif;
+    --font-size: 16px;
+    --transition: 0.3s;
+    --border-radius: 5px;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --text-gradient: linear-gradient(90deg, #007bff, #ff5733);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+}
+
+body {
+    background-color: var(--gray-color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.tower-of-hanoi {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin: 20px 0px;
+    min-height: calc(100vh - 40px);
+    color: #333333;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: var(--text-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    max-width: 600px;
+    margin-bottom: 20px;
+    gap: 30px;
+}
+
+.description-container,
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    min-height: max-content;
+    background-color: var(--gray-color-light);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--info-color);
+}
+
+.description {
+    font-size: 13px;
+    text-align: justify;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--gray-color-dark);
+    user-select: none;  
+}
+
+.disk-count {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid var(--gray-color-dark);
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    text-align: center;
+}
+
+.control-button {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 3px 8px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition);
+    user-select: none;  
+}
+
+.control-button:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.moves-counter {
+    color: var(--gray-color-dark);
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--gray-color-light);
+    box-shadow: var(--box-shadow); 
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.moves-counter span {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.action-button {
+    background-color: var(--secondary-color);
+    border: none;
+    color: white;
+    padding: 7px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition);
+}
+
+.action-button:hover {
+    background-color: var(--secondary-color-dark);
+}
+
+.canvas {
+    margin-top: 10px;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 0.5px solid rgb(255, 220, 176);
+}
+
+/* Moves log modal */
+.moves-log-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.moves-log-modal.remove {
+    display: none;
+}
+
+.moves-log-modal-content {
+    background-color: var(--light-color);
+    padding: 15px 25px;
+    border-radius: var(--border-radius);
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+.moves-log-modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.moves-log-modal-content .close:hover {
+    color: #d9534f;
+}
+
+.moves-log-modal-content h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.moves-log-modal-content ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+.moves-log-modal-content ul li {
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    color: #555;
+    display: flex;
+    justify-content: space-between;
+}
+
+.moves-log-modal-content ul li span {
+    font-weight: normal;
+    font-size: 0.8rem;
+    color: #444;
+}
+
+.moves-log-modal-content ul::-webkit-scrollbar {
+    width: 5px;
+}
+
+.moves-log-modal-content ul::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
+.moves-log-modal-content ul::-webkit-scrollbar-thumb:hover {
+    background-color: #888;
+}
+
+/* Solved */
+.success-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    user-select: none;
+}
+
+.success-message h2 {
+    background: var(--text-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.success-message.remove {
+    display: none;
+}

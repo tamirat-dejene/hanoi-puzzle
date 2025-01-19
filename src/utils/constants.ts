@@ -1,0 +1,67 @@
+// canvas width and height
+const CANVAS_WIDTH = 600;
+const CANVAS_HEIGHT = 400;
+
+// Towers constants
+const STANDING_TOWER_HEIGHT = 200;
+const STANDING_TOWER_WIDTH = 16;
+const BASE_TOWER_HEIGHT = 15;
+const BASE_TOWER_WIDTH = 170;
+const TOWER_SPACING = CANVAS_WIDTH / 3;
+const BOTTOM_OFFSET = 30; // from the topleft the base of the tower
+const TOWER_STROKE_WEIGHT = 2;
+const TOWER_STROKE_COLOR = "black";
+const TOWER_FILL_COLOR = "gold";
+const BASE_STROKE_COLOR = "black";
+const BASE_FILL_COLOR = "goldenrod";
+
+// Disk constants
+const DISK_HEIGHT = 18;
+const START_DISK_WIDTH = 140;
+const DISK_WIDTH_DECREMENT = 10;
+const DISK_SPACING = 3;
+const STAND_CENTER_X = TOWER_SPACING / 2;
+const BOTTOM_START_Y = CANVAS_HEIGHT - BOTTOM_OFFSET;
+const DISK_STROKE_COLOR = "black";
+const DISK_STROKE_WEIGHT = 1;
+const DISK_COLORS = [
+  "red",
+  "blue",
+  "green",
+  "purple",
+  "orange",
+  "pink",
+  "brown",
+  "cyan",
+];
+
+// Border radius
+const DISK_RAD = 9;
+const TOWER_RAD = 6;
+
+export {
+  CANVAS_WIDTH,
+  CANVAS_HEIGHT,
+  STANDING_TOWER_HEIGHT,
+  STANDING_TOWER_WIDTH,
+  BASE_TOWER_HEIGHT,
+  BASE_TOWER_WIDTH,
+  TOWER_SPACING,
+  BOTTOM_OFFSET,
+  TOWER_STROKE_WEIGHT,
+  TOWER_STROKE_COLOR,
+  TOWER_FILL_COLOR,
+  BASE_STROKE_COLOR,
+  BASE_FILL_COLOR,
+  DISK_HEIGHT,
+  START_DISK_WIDTH,
+  DISK_WIDTH_DECREMENT,
+  DISK_SPACING,
+  DISK_STROKE_COLOR,
+  DISK_STROKE_WEIGHT,
+  STAND_CENTER_X,
+  BOTTOM_START_Y,
+  DISK_RAD,
+  TOWER_RAD,
+  DISK_COLORS,
+};
