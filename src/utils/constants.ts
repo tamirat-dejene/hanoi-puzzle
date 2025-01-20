@@ -5,7 +5,7 @@ const CANVAS_HEIGHT = 400;
 // Towers constants
 const STANDING_TOWER_HEIGHT = 200;
 const STANDING_TOWER_WIDTH = 16;
-const BASE_TOWER_HEIGHT = 15;
+const BASE_TOWER_HEIGHT = 16;
 const BASE_TOWER_WIDTH = 170;
 const TOWER_SPACING = CANVAS_WIDTH / 3;
 const BOTTOM_OFFSET = 30; // from the topleft the base of the tower
@@ -37,7 +37,7 @@ const DISK_COLORS = [
 
 // Border radius
 const DISK_RAD = 9;
-const TOWER_RAD = 6;
+const TOWER_RAD = 7;
 
 export {
   CANVAS_WIDTH,

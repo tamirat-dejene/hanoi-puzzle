@@ -16,7 +16,7 @@ const TowerOfHanoi: React.FC = () => {
 
   return (
     <div className="tower-of-hanoi">
-      <h1 className="title">Tower of Hanoi</h1>
+      <div className="title-container"><h1 className="title">Tower of Hanoi</h1></div>
       <div className="header-container">
         <div className="controls-container">
           <div className="controls">
