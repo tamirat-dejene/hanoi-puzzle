@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import useCanvas from "./hooks/useCanvas.tsx";
 import MovesLogModal from "./components/moves_log_modal.tsx";
-import { towerOfHanoiSolver } from "./utils/solver.ts";
+import { towersOfHanoiSolver } from "./utils/solver.ts";
 import SuccessMessage from "./components/success_message.tsx";
 
-const TowerOfHanoi: React.FC = () => {
+const TowersOfHanoi: React.FC = () => {
   const [diskCount, setDiskCount] = useState<number>(3);
   const [canvasRef, moves, movesLog, solved, solving, handleSolve, handleRestart] = useCanvas(diskCount);
   const [showMovesLog, setShowMovesLog] = useState<boolean>(false);
-  const [minMoves, setMinMoves] = useState<number>(towerOfHanoiSolver(diskCount, 0, 1, 2).length);
+  const [minMoves, setMinMoves] = useState<number>(towersOfHanoiSolver(diskCount, 0, 1, 2).length);
 
   useEffect(() => {
-    setMinMoves(towerOfHanoiSolver(diskCount, 0, 1, 2).length);
+    setMinMoves(towersOfHanoiSolver(diskCount, 0, 1, 2).length);
   }, [diskCount]);
 
   return (<>
     <div className="tower-of-hanoi">
-      <div className="title-container"><h1 className="title">Tower of Hanoi</h1></div>
+      <div className="title-container"><h1 className="title">Towers of Hanoi</h1></div>
       <div className="header-container">
         <div className="controls-container">
           <div className="controls">
@@ -59,4 +59,4 @@ const TowerOfHanoi: React.FC = () => {
   </>);
 };
 
-export default TowerOfHanoi;
+export default TowersOfHanoi;

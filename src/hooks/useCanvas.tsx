@@ -4,7 +4,7 @@ import { draw_disk, draw_hanoi_towers } from "../utils/components";
 import { BOTTOM_OFFSET, CANVAS_HEIGHT, DISK_SPACING, TOWER_SPACING } from "../utils/constants";
 import { getMousePos, isMouseInDisk } from "../utils/events";
 import { init_disks } from "../utils/intializers";
-import { towerOfHanoiSolver } from "../utils/solver";
+import { towersOfHanoiSolver } from "../utils/solver";
 import { Disk, MoveLog } from "../utils/types";
 
 const useCanvas = (diskCount: number) => {
@@ -181,7 +181,7 @@ const useCanvas = (diskCount: number) => {
 
     // Function to solve the puzzle
     const handleSolve = () => {
-        const solution = towerOfHanoiSolver(diskCount, 0, 1, 2); // [from, to]
+        const solution = towersOfHanoiSolver(diskCount, 0, 1, 2); // [from, to]
         handleRestart();
         setSolving(true);
         setMovesLog([]);
