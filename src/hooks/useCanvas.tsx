@@ -18,8 +18,16 @@ const useCanvas = (diskCount: number) => {
     const [solving, setSolving] = useState<boolean>(false);
     const [draggingDisk, setDraggingDisk] = useState<(Disk & { towerIndex: number, old_x: number, old_y: number }) | null>(null);
 
+    const stepIndexRef = useRef<number>(0);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
     // Restart handler
     const handleRestart = () => {
+        // Clear any active timeout
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+            timeoutRef.current = null;
+        }
         setLeftDisks(init_disks(diskCount, 0));
         setMidDisks([]);
         setRightDisks([]);
@@ -28,6 +36,8 @@ const useCanvas = (diskCount: number) => {
         setSolved(false);
         setDraggingDisk(null);
         setSolving(false);
+
+        stepIndexRef.current = 0;
     };
 
     // Reset towers when diskCount changes
@@ -176,14 +186,21 @@ const useCanvas = (diskCount: number) => {
         setSolving(true);
         setMovesLog([]);
         const moveSteps = solution.map(([from, to]: [number, number]) => ({ from, to }));
+
         const animateStep = (stepIndex: number) => {
-            if (stepIndex >= moveSteps.length) return;
+            if (stepIndex >= moveSteps.length) {
+                setSolving(false);
+                return;
+            }
+
             const { from, to } = moveSteps[stepIndex];
             moveDisk(from, to);
             setMovesLog((prev) => [...prev, { disk: leftDisks[leftDisks.length - 1], from, to }]);
             setMoves((prev) => prev + 1);
-            setTimeout(() => animateStep(stepIndex + 1), 1000);
+            stepIndexRef.current = stepIndex + 1;
+            timeoutRef.current = setTimeout(() => animateStep(stepIndexRef.current), 1000);
         };
+
         animateStep(0);
     };
 
@@ -203,7 +220,7 @@ const useCanvas = (diskCount: number) => {
         });
     };
 
-    return [canvasRef, moves, movesLog, handleSolve, solved, solving, handleRestart] as const;
+    return [canvasRef, moves, movesLog, solved, solving, handleSolve, handleRestart] as const;
 };
 
 export default useCanvas;
