@@ -1,1 +1,1 @@
-## Hanoi tower Game, by Tamiu
+## Hanoi tower Game, G4
