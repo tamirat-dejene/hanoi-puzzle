@@ -4,7 +4,7 @@ import MovesLogModal from "./components/moves_log_modal.tsx";
 import { towersOfHanoiSolver } from "./utils/solver.ts";
 import SuccessMessage from "./components/success_message.tsx";
 
-const TowersOfHanoi: React.FC = () => {
+const TowerOfHanoi: React.FC = () => {
   const [diskCount, setDiskCount] = useState<number>(3);
   const [canvasRef, moves, movesLog, solved, solving, handleSolve, handleRestart] = useCanvas(diskCount);
   const [showMovesLog, setShowMovesLog] = useState<boolean>(false);
@@ -16,13 +16,13 @@ const TowersOfHanoi: React.FC = () => {
 
   return (<>
     <div className="tower-of-hanoi">
-      <div className="title-container"><h1 className="title">Towers of Hanoi</h1></div>
+      <div className="title-container"><h1 className="title">Tower of Hanoi</h1></div>
       <div className="header-container">
         <div className="controls-container">
           <div className="controls">
             <label>Disks:</label>
             <button className="control-button" onClick={() => setDiskCount((prev) => {
-              if (solving) {handleRestart();return prev;}
+              if (solving) { handleRestart(); return prev; }
               return Math.max(3, prev - 1);
             })}>▼</button>
             <span className="disk-count">{diskCount}</span>
@@ -59,4 +59,4 @@ const TowersOfHanoi: React.FC = () => {
   </>);
 };
 
-export default TowersOfHanoi;
+export default TowerOfHanoi;

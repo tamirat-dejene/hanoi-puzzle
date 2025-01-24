@@ -1,10 +1,10 @@
 // import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import TowersOfHanoi from './App.tsx'
+import TowerOfHanoi from './App.tsx'
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>
-    <TowersOfHanoi />
+    <TowerOfHanoi />
   // </StrictMode>,
 );
